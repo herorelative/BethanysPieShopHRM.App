@@ -1,0 +1,40 @@
+﻿<!-- Modal -->
+@if (ShowDialog)
+{
+    <div class="modal fade show d-block position-static" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Employee Quick Add</h5>
+                    <button type="button" class="close" @onclick="@Close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <EditForm Model="@Employee" OnValidSubmit="@HandleValidSubmit">
+                    <DataAnnotationsValidator></DataAnnotationsValidator>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <InputText id="lastName" class="form-control col-sm-12" @bind-Value="@Employee.LastName" placeholder="Enter last name"></InputText>
+                            <ValidationMessage class="text-danger" For="@(() => Employee.LastName)"></ValidationMessage>
+                        </div>
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <InputText id="firstName" class="form-control" @bind-Value="@Employee.FirstName" placeholder="Enter first name"></InputText>
+                            <ValidationMessage class="text-danger" For="@(() => Employee.FirstName)"></ValidationMessage>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <InputText id="email" class="form-control col-sm-12" @bind-Value="@Employee.Email" placeholder="Enter email"></InputText>
+                            <ValidationMessage class="text-danger" For="@(() => Employee.Email)"></ValidationMessage>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save employee</button>
+                        <a class="btn btn-outline-secondary" @onclick="@Close">Close</a>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+}

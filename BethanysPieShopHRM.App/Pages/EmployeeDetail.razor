@@ -1,0 +1,77 @@
+﻿@page "/employeedetail/{id:int}"
+
+<section>
+    <h1>Employee Detail for @Employee.FirstName @Employee.LastName</h1>
+
+    <div class="row mt-5">
+        <div class="col-md-5 text-center">
+            <img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{Employee.EmployeeId}.jpg")" class="img-fluid rounded-circle" />
+            <br /><br />
+            <Map Zoom="10" Markers="@MapMarkers"></Map>
+        </div>
+        <div class="col-md-7">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <small class="text-muted">First Name</small>
+                    <p>@Employee.FirstName</p>
+                </li>
+                <li class="list-group-item">
+                    <small class="text-muted">Last Name</small>
+                    <p>@Employee.LastName</p>
+                </li>
+                <li class="list-group-item">
+                    <small class="text-muted">Birth Date</small>
+                    <p>@Employee.BirthDate.ToString("dd/MM/yyyy")</p>
+                </li>
+                <li class="list-group-item">
+                    <small class="text-muted">Email</small>
+                    <p>@Employee.Email</p>
+                </li>
+                <li class="list-group-item">
+                    <small class="text-muted">Street</small>
+                    <p>@Employee.Street</p>
+                </li>
+                <li class="list-group-item">
+                    <small class="text-muted">Zip</small>
+                    <p>@Employee.Zip</p>
+                </li>
+                <li class="list-group-item">
+                    <small class="text-muted">City</small>
+                    <p>@Employee.City</p>
+                </li>
+                <li class="list-group-item">
+                    <small class="text-muted">Phone number</small>
+                    <p>@Employee.PhoneNumber</p>
+                </li>
+                <li class="list-group-item">
+                    <small class="text-muted">Gender</small>
+                    <p>@Employee.Gender</p>
+                </li>
+                <li class="list-group-item">
+                    <small class="text-muted">Marital Status</small>
+                    <p>@Employee.MaritalStatus</p>
+                </li>
+                <li class="list-group-item">
+                    <small class="text-muted">Smoker</small>
+                    @if (Employee.Smoker)
+                    {
+                        <p>Yes</p>
+                    }
+                    else
+                    {
+                        <p>No</p>
+                    }
+                </li>
+                <li class="list-group-item">
+                    <small class="text-muted">Joined Us</small>
+                    <p>@Employee.JoinedDate?.ToString("dd/MM/yyyy")</p>
+                </li>
+                <li class="list-group-item">
+                    <small class="text-muted">Leave Us</small>
+                    <p>@Employee.ExitDate?.ToString("dd/MM/yyyy")</p>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+</section>

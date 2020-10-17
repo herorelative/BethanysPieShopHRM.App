@@ -1,0 +1,43 @@
+﻿@page "/employeeoverview"
+
+<h1 class="">All Employees</h1>
+@if (Employees == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Employee Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Employees)
+            {
+            <tr>
+                <td><img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{employee.EmployeeId}-small.jpg")" class="rounded-circle" /></td>
+                <td>@employee.EmployeeId</td>
+                <td>@employee.FirstName</td>
+                <td>@employee.LastName</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="@($"/employeedetail/{employee.EmployeeId}")">
+                        Details
+                    </a>
+                    <a class="btn btn-outline-primary btn-sm" href="@($"/employeeedit/{employee.EmployeeId}")">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<button @onclick="QuickAddEmployee" class="btn btn-dark">Quick Add Employee</button>
+<AddEmployeeDialog @ref="AddEmployeeDialog" CloseEventCallback="@AddEmployeeDialog_OnDialogClose"></AddEmployeeDialog>
